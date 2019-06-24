@@ -1,0 +1,9 @@
+.random-machine {
+    background-color: hsl(220, 24%, 88%);
+    width: 40%;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
