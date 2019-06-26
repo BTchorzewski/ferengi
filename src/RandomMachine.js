@@ -7,15 +7,17 @@ export default class RandomMachine extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            rules: [...rulesJSON],
             rule: {},
             random: 34
         }
     this.randomRuleCreator = this.randomRuleCreator.bind(this);
+    
     }
     
     componentDidMount() {
         this.setState({
-            rule: rulesJSON[this.state.random]
+            rule: this.state.rules[this.state.random]
         })
     }
 
@@ -23,6 +25,27 @@ export default class RandomMachine extends Component {
         this.setState({
             rule: rulesJSON[_.random(0, rulesJSON.length)]
         })
+    }
+
+    nameChangedHandler = (ruleID) => {
+        // kopiujemy tablice
+        const rules = [...this.state.rules];
+        // szukamy indexu elementu którego chcemy zmienić.
+        const ruleIndex = this.state.rules.findIndex( rule => {
+          return rule.id === ruleID;
+        });
+        // kopiujemy nasz element z tablicy
+        const rule = {
+          ...this.state.rule[ruleIndex]
+        };
+        // zmieniamy wartość 'name' w tym elemencie
+        rule.like = !rule.like;
+        // wpisujemy element do naszej nowej listy
+        rules[ruleIndex] = rule;
+        // aktualizujemy nasz stan
+        this.setState({
+          rules: rules
+        });
     }
 
     render() {

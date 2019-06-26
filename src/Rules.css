@@ -1,0 +1,25 @@
+.rules {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10rem;
+    
+}
+
+.rules__all,
+.rule__liked {
+    flex: 0 0 40%;
+    height: 80vh;   
+    
+    position: relative;
+}
+.rules__items {
+    height: 100%;
+    overflow-y: scroll;
+}
+.rules__title {
+    display: block;
+    margin-bottom: 3rem;
+    text-align: center;    
+
+}
