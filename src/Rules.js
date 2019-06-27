@@ -1,84 +1,51 @@
 import React, { Component } from 'react'
-import RuleComponent from './RuleComponent'
-import rulesJSON from './data/rules'
+import RuleContainer from './RuleContainer'
+import { connect } from "react-redux";
+import {withRouter} from 'react-router-dom'
 import './Rules.css'
-export default class Rules extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            rules: []
-        }
-        this.likesChangedHandler = this.likesChangedHandler.bind(this)
-    }
-    componentDidMount() {
-        this.setState({
-            rules: [...rulesJSON]
-        })
-    }
 
 
-    likesChangedHandler = (ruleID) => {
-        const rules = [...this.state.rules];
-        const ruleIndex = this.state.rules.findIndex( rule => {
-          return rule.id === ruleID;
-        });
-        const rule = {
-          ...this.state.rules[ruleIndex]
-        };
-        rule.liked = !rule.liked;
-        rules[ruleIndex] = rule;
-        this.setState({
-          rules: rules
-        });
-    }
-
+import './Rules.css'
+class Rules extends Component {
+    
     render() {
-
-        const likedRules = this.state.rules.filter( e => e.liked === true );
-
         return (
-            <div>
-              
-                   <div className="rules">
-                       <div className="rules__all">
-                           <h2 className="rules__title">All rules</h2>
-                           <div className="rules__items">
-                                {
-                                    this.state.rules.map( e => {
-                                        return <RuleComponent 
-                                                data={e}
-                                                changeLikes={this.likesChangedHandler}
-                                            />
-                                        }
-                                    )
+            <div className="rules">
+                <div className="rules__all">
+                    <h2 className="rules__title">All rules</h2>
+                    <div className="rules__items">
+                        {  
+                            this.props.allRules.map( e => {
+                                return <RuleContainer rules={e} />
                                 }
-                            </div>
-                       </div>
-
-                       <div className="rules__liked">
-                           <h2 className="rules__title">Liked rules</h2>
-                           <div className="rules__items">
-                                {
-                                    likedRules.map( e => {
-                                        return <RuleComponent 
-                                                data={e}
-                                                changeLikes={this.likesChangedHandler}
-                                            />
-                                        }
-                                    )
+                            )
+                        }
+                    </div>
+                </div>
+                <div className="rules__liked">
+                    <h2 className="rules__title">Liked rules</h2>
+                    <div className="rules__items">
+                        {  
+                            this.props.likedRules.map( e => {
+                                return <RuleContainer rules={e}/>
                                 }
-
-                           </div>
-                        </div>
-
-
-
-
-                   </div>
-                   
-              
-                
-            </div>
-        )
+                            )
+                        }
+                </div>
+                </div>     
+            </div>   
+            )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        likedRules: state.rules.filter(e => { return e.isLiked === true}),
+        allRules: state.rules
+    }
+}
+
+
+
+  
+export const RulesContainer = withRouter(connect(mapStateToProps, null)(Rules));

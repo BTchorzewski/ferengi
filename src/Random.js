@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import './Random.css';
-import RandomMachine from './RandomMachine'
+import {RandomMachineContainer} from './RandomMachineContainer'
 
 export default class Random extends Component {
     render() {
         return (
             <div className='Random'>
-                <RandomMachine /> 
+                <RandomMachineContainer /> 
             </div>
         )
     }

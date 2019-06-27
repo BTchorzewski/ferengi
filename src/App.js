@@ -1,23 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Provider } from 'react-redux';
+
 import './App.css';
 import Navigation from './Navigation';
-import Rules from './Rules';
+import {RulesContainer} from './Rules';
 import Random from './Random';
-function App() {
+function App({store}) {
   return (
-    <Router>
-        <div className="App">
-          <Navigation />
-        
-
+    <Provider store={store}>
+      <Router>
           
-        </div>
-        
-        <Route path="/random/" component={Random} />
-        <Route path="/rules/" component={Rules} /> 
-    </Router>
-    
+            <Navigation />
+            <Route path="/random/" component={Random} />
+            <Route path="/rules/" component={RulesContainer} /> 
+          
+      </Router>
+    </Provider> 
   );
 }
 

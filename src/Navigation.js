@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import './Navigation.css'
 
 export default class Navigation extends Component {
@@ -9,10 +10,10 @@ export default class Navigation extends Component {
                 
                 <ul className='navigation__list'>
                     <li className='navigation__item'>
-                        <a className='navigation__link' href='/random'>Random rules</a>
+                        <Link className='navigation__link' to='/random'>Random rules</Link>
                     </li>
                     <li className='navigation__item'>
-                        <a className='navigation__link' href='/rules'>List of rules</a>
+                        <Link className='navigation__link' to='/rules'>List of rules</Link>
                     </li>
                 </ul>
             </nav>
