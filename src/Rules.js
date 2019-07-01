@@ -1,40 +1,73 @@
-import React, { Component } from 'react'
-import RuleContainer from './RuleContainer'
+import React, { Component } from 'react';
+import RuleContainer from './RuleContainer';
 import { connect } from "react-redux";
-import {withRouter} from 'react-router-dom'
-import './Rules.css'
+import {withRouter} from 'react-router-dom';
+import styled from 'styled-components';
 
+const Wrapper = styled.div`
+    background-color: #f3ff93;
+    padding: 0 2rem;
+    width: 30%;
+    height: 70vh;
+    overflow-y: scroll;
+    position: relative;
+`;
 
-import './Rules.css'
-class Rules extends Component {
+const Breadcrumbs = styled.div`
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background-color: inherit;
+    padding: 3rem;
     
+`;
+
+const BreadcrumbsItem = styled.a`
+    &:link,
+    &:visited {
+        font-size: 1.8rem;
+        color: #fff;    
+    }
+
+`;
+
+
+
+class Rules extends Component {
+   
     render() {
         return (
-            <div className="rules">
-                <div className="rules__all">
-                    <h2 className="rules__title">All rules</h2>
-                    <div className="rules__items">
+            <Wrapper>
+                <Breadcrumbs>
+                    <BreadcrumbsItem>All</BreadcrumbsItem>
+                    <BreadcrumbsItem>Liked</BreadcrumbsItem>
+                </Breadcrumbs>
+                <div>
+                    <ul>
                         {  
                             this.props.allRules.map( e => {
                                 return <RuleContainer rules={e} />
                                 }
                             )
                         }
-                    </div>
+                    </ul>
                 </div>
-                <div className="rules__liked">
-                    <h2 className="rules__title">Liked rules</h2>
-                    <div className="rules__items">
-                        {  
+                <div>
+                    <ul>
+                        <li>
+                            {  
                             this.props.likedRules.map( e => {
                                 return <RuleContainer rules={e}/>
-                                }
-                            )
-                        }
+                                    }
+                                )
+                            }
+                        </li>
+                    </ul>    
                 </div>
-                </div>     
-            </div>   
-            )
+                         
+                   
+            </Wrapper>   
+        )
     }
 }
 
