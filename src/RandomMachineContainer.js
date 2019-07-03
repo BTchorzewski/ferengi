@@ -46,7 +46,10 @@ class RandomMachine extends Component {
     render() {
         return (
             <Random>
-                <RuleContainer rules={this.props.allRules[this.state.randomNumber]} />
+                <ul>
+                    <RuleContainer rules={this.props.allRules[this.state.randomNumber]} />
+                </ul>
+                
                 <Button onClick={this.randomNumber.bind(this)}>Random rule</Button>
             </Random>
         )

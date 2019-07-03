@@ -15,14 +15,14 @@ const rules = [
   },
   {
     "id": "dx3",
-    "number": 2,
+    "number": 3,
     "rule": "Money is everything.",
     "source": "Strange New Worlds 9: \"The Last Tree on Ferenginar: A Ferengi Fable From the Future",
     "isLiked": false
   },
   {
     "id": "dx4",
-    "number": 3,
+    "number": 4,
     "rule": "Never spend more for an acquisition than you have to.",
     "source": "The Maquis, Part II\" (DS9 episode)",
     "isLiked": false

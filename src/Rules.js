@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RuleContainer from './RuleContainer';
 import { connect } from "react-redux";
+import { getAllRules, getLikedRules } from './redux/selector'
 import {withRouter} from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -25,8 +26,20 @@ const Breadcrumbs = styled.div`
 const BreadcrumbsItem = styled.a`
     &:link,
     &:visited {
+        display: inline-block;
         font-size: 1.8rem;
-        color: #fff;    
+        color: #f32145;
+        
+        
+        
+        &:not(:last-child) {
+            margin-right: 1rem;
+        }
+
+        &:not(:last-child)::after {
+            content: '';
+        }
+
     }
 
 `;
@@ -34,36 +47,71 @@ const BreadcrumbsItem = styled.a`
 
 
 class Rules extends Component {
-   
+    constructor(props) {
+        super(props);
+        this.state = {
+            breadcrumbs: true
+        }
+    }
+    changeBreadcrumbsTrue() {
+        this.setState({
+            breadcrumbs: true
+        })
+    }
+    changeBreadcrumbsFalse() {
+        this.setState({
+            breadcrumbs: false
+        })
+    }
+
+    
     render() {
-        return (
-            <Wrapper>
-                <Breadcrumbs>
-                    <BreadcrumbsItem>All</BreadcrumbsItem>
-                    <BreadcrumbsItem>Liked</BreadcrumbsItem>
-                </Breadcrumbs>
-                <div>
-                    <ul>
-                        {  
-                            this.props.allRules.map( e => {
-                                return <RuleContainer rules={e} />
-                                }
-                            )
-                        }
-                    </ul>
-                </div>
-                <div>
-                    <ul>
-                        <li>
+
+        const toggleContainers = (param) => {
+            if(param) {
+                return (
+                    <div>
+                        <ul>
                             {  
-                            this.props.likedRules.map( e => {
-                                return <RuleContainer rules={e}/>
+                                this.props.allRules.map( e => {
+                                    return <RuleContainer key={e.id} rules={e} />
                                     }
                                 )
                             }
-                        </li>
-                    </ul>    
-                </div>
+                        </ul>
+                    </div>
+                )
+            } 
+            else {
+                return (
+                    <div>
+                        <ul>
+                        
+                            {  
+                            this.props.likedRules.map( e => {
+                                return <RuleContainer key={e.id} rules={e}/>
+                                    }
+                                )
+                            }
+                        
+                        </ul>    
+                    </div>
+                )
+            }
+        };
+
+
+
+        return (
+            <Wrapper>
+                <Breadcrumbs>
+                    <BreadcrumbsItem onClick={this.changeBreadcrumbsTrue.bind(this)} href="#">All</BreadcrumbsItem>
+                    <BreadcrumbsItem onClick={this.changeBreadcrumbsFalse.bind(this)} href="#">Liked</BreadcrumbsItem>
+                </Breadcrumbs>
+                
+                {
+                    toggleContainers(this.state.breadcrumbs)
+                }
                          
                    
             </Wrapper>   
@@ -73,8 +121,8 @@ class Rules extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        likedRules: state.rules.filter(e => { return e.isLiked === true}),
-        allRules: state.rules
+        likedRules: getLikedRules(state),
+        allRules: getAllRules(state)
     }
 }
 

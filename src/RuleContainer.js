@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import { changeToLiked, changeToUnliked } from './redux/actions';
 import { connect } from "react-redux";
 import {withRouter} from 'react-router-dom';
 import styled from 'styled-components';
 
-const StyledRule = styled.div`
+const StyledRule = styled.li`
     background-color: #bdff93;
     padding: 2rem;
     margin: .5rem;
@@ -18,38 +18,66 @@ const Paragraph = styled.p`
 `;
 
 const Button = styled.button`
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: ${props =>  props.zIndex};
+   
     
 `;
 
 
 
 
-const Rule = (props) => {
-    // used hooks to update container
-    const [ liked, setLiked] = useState(props.rules.isLiked);
+class Rule extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+           isLiked: false
+        }
+        this.changeStateLike = this.changeStateLike.bind(this);
+       
+    }
+
+    componentWillMount(){
+        this.setState({
+            isLiked: this.props.rules.isLiked
+        })
+    }
+   
+    
+    changeStateLike(){
+        this.setState({
+            isLiked: !this.state.isLiked
+        })
+    }
+
     
 
+    render() {
+        return (
+            <StyledRule>
+                <Paragraph>Number: {this.props.rules.number}</Paragraph>
+                <Paragraph>Rule: {this.props.rules.rule}</Paragraph>
+                <Paragraph> Source: {this.props.rules.source}</Paragraph>
+                <p>redux:{JSON.stringify(this.props.rules.isLiked)}</p>
+                <p>state: {JSON.stringify(this.state.isLiked)} </p>
+                <p>{this.props.rules.id}</p>
+                    {
+                        this.state.isLiked ?
+                        <Button onClick={() => { this.props.unlike(this.props.rules.id); this.changeStateLike()} }>make unliked</Button>
+                        :
+                        <Button onClick={() => { this.props.like(this.props.rules.id); this.changeStateLike()}}>make liked</Button>
+               
 
-    return (
-        <StyledRule key={props.rules.id}>
-            <Paragraph>Number: {props.rules.number}</Paragraph>
-            <Paragraph>Rule: {props.rules.rule}</Paragraph>
-            <Paragraph> Source: {props.rules.source}</Paragraph>
-            {
-                liked
-                ?
-                <Button onClick={() => { props.unlike(props.rules.id); setLiked(false)}} zIndex={15}>make unliked</Button>
-                :
-                <Button onClick={() => { props.like(props.rules.id); setLiked(true)} } zIndex={10}>make liked</Button>
-            }
-            
-        </StyledRule>
-    )
+
+                    }
+                        
+                
+                
+            </StyledRule>
+        )
+    }
 }
+
+
+
 
     
 const mapDispatchToProps = (dispatch) => {
