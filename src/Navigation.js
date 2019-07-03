@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import Logo from './Logo'
+
 const NavigationBar = styled.div`
     background-color: #560d0d;
     padding: 2rem 3rem; 
@@ -42,19 +44,11 @@ const StyledLink = styled(Link)`
     }
 `;
 
-
-
-
-
-
-
-
-
 export default class Navigation extends Component {
     render() {
         return (
             <NavigationBar>
-                <div className='navigation__logo'>LOGO FERENGI</div>
+                <Logo />
                 <nav className='navigation'>
                     <NavigationList>
                     <NavigationItem>
