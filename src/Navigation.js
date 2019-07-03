@@ -57,6 +57,9 @@ export default class Navigation extends Component {
                 <div className='navigation__logo'>LOGO FERENGI</div>
                 <nav className='navigation'>
                     <NavigationList>
+                    <NavigationItem>
+                            <StyledLink className='navigation__link' to='/'>Home</StyledLink>
+                        </NavigationItem>
                         <NavigationItem>
                             <StyledLink className='navigation__link' to='/random'>Random rules</StyledLink>
                         </NavigationItem>

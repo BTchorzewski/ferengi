@@ -6,7 +6,7 @@ import store from './redux/store'
 import Navigation from './Navigation';
 import { RulesContainer } from './Rules';
 import { RandomMachineContainer } from './RandomMachineContainer';
-
+import Home from "./Home";
 const Main = styled.main`
   background-color: #76a21e;
   height: 93vh;
@@ -23,8 +23,9 @@ function App() {
       <Router>
         <Navigation />
         <Main>
-          <Route path="/random/" component={RandomMachineContainer} />
-          <Route path="/rules/" component={RulesContainer} /> 
+          <Route exact path="/" component={Home} />
+          <Route path="/random" component={RandomMachineContainer} />
+          <Route path="/rules" component={RulesContainer} /> 
         </Main>
       </Router>
     </Provider> 
