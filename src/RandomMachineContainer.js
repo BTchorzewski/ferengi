@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { getAllRules } from './redux/selector';
 import {withRouter} from 'react-router-dom';
 import RuleContainer from './RuleContainer';
 import styled from 'styled-components';
@@ -8,7 +9,7 @@ import _ from 'lodash';
 const Random = styled.div`
     background-color: #f3ff93;
     padding: 5rem 4rem 2rem 4rem;
-    width: 30%;
+    width: 70%;
     min-height: 12vh;
     border-radius:.3rem;
     box-shadow: 0 .3rem .6rem rgba(0,0,0, .25);
@@ -44,10 +45,11 @@ class RandomMachine extends Component {
     }
     
     render() {
+        const randomRule = this.props.allRules[this.state.randomNumber];
         return (
             <Random>
                 <ul>
-                    <RuleContainer rules={this.props.allRules[this.state.randomNumber]} />
+                    <RuleContainer key={randomRule.id} rules={randomRule} />
                 </ul>
                 
                 <Button onClick={this.randomNumber.bind(this)}>Random rule</Button>
@@ -58,7 +60,7 @@ class RandomMachine extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        allRules: state.rules
+        allRules: getAllRules(state)
     }
 }
 

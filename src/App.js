@@ -9,10 +9,11 @@ import { RandomMachineContainer } from './RandomMachineContainer';
 import Home from "./Home";
 const Main = styled.main`
   background-color: #76a21e;
-  height: 93vh;
+  min-height: 93vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10rem 0;
   
   
 `;

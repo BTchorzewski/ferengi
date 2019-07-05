@@ -8,7 +8,7 @@ import styled from 'styled-components';
 const Wrapper = styled.div`
     background-color: #f3ff93;
     padding: 0 2rem;
-    width: 30%;
+    width: 70%;
     height: 70vh;
     overflow-y: scroll;
     position: relative;
