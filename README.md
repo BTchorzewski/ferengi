@@ -9,10 +9,11 @@ Ferengi app allows users to discover rules of acquisition.
 ##Features
 
 application features: 
-    * randoming a rule of acquisition 
-    * adding a rule to the list of favorities rules
-    * removing a rule from the list of favorities rules
-    * saving the list of rules in local storage 
+*   randoming a rule of acquisition
+*   adding a rule to the list of favorities rules
+*   removing a rule from the list of favorities rules
+*   saving the list of rules in local storage
+ 
 
 ##Technology:
 
