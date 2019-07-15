@@ -10,6 +10,7 @@ const StyledRule = styled.li`
     margin: .5rem;
     flex: 1;
     position: relative;
+    list-style: none;
 `;
 
 const Paragraph = styled.p`
@@ -56,9 +57,7 @@ class Rule extends Component {
                 <Paragraph>Number: {this.props.rules.number}</Paragraph>
                 <Paragraph>Rule: {this.props.rules.rule}</Paragraph>
                 <Paragraph> Source: {this.props.rules.source}</Paragraph>
-                <p>redux:{JSON.stringify(this.props.rules.isLiked)}</p>
-                <p>state: {JSON.stringify(this.state.isLiked)} </p>
-                <p>{this.props.rules.id}</p>
+                <Paragraph>Favorite: {this.props.rules.isLiked ? "Liked" : "Can be liked"}</Paragraph>    
                     {
                         this.state.isLiked ?
                         <Button onClick={() => { this.props.unlike(this.props.rules.id); this.changeStateLike()} }>make unliked</Button>

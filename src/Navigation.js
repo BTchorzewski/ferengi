@@ -21,9 +21,17 @@ const NavigationList = styled.ul`
     display: flex;
     justify-content: space-evenly;
     list-style: none;
+
+    @media screen and (max-width: 56.25em) {
+        flex-direction: column;
+        height: 100vh;
+        width: 100vw;
+    }
 `;
 
 const NavigationItem = styled.li`
+
+    
     &:not(:last-child){
         margin-right: 1.5rem;
     }
@@ -42,6 +50,9 @@ const StyledLink = styled(Link)`
     &:active {
         border: .2rem solid #fff; 
     }
+    &::-moz-focus-inner {
+        border: none
+    }
 `;
 
 export default class Navigation extends Component {
@@ -51,6 +62,7 @@ export default class Navigation extends Component {
                 <Logo />
                 <nav className='navigation'>
                     <NavigationList>
+                         
                     <NavigationItem>
                             <StyledLink className='navigation__link' to='/'>Home</StyledLink>
                         </NavigationItem>

@@ -89,7 +89,7 @@ class Rules extends Component {
                         
                             {  
                             this.props.likedRules.map( e => {
-                                return <RuleContainer key={e.id} rules={e}/>
+                                        return <RuleContainer key={e.id} rules={e}/>
                                     }
                                 )
                             }
