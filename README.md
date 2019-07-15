@@ -19,3 +19,8 @@ Application features:
 *   localStorage
 *   styled component
 
+####   Status:
+In development
+ 
+### Online:
+
