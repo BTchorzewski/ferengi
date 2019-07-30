@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from 'react-redux';
 import styled from 'styled-components';
 import store from './redux/store'
-import Navigation from './Navigation';
+import NavigationBar from './NavigationBar';
 import { RulesContainer } from './Rules';
 import { RandomMachineContainer } from './RandomMachineContainer';
 import Home from "./Home";
@@ -22,7 +22,7 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Navigation />
+        <NavigationBar />
         <Main>
           <Route exact path="/" component={Home} />
           <Route path="/random" component={RandomMachineContainer} />

@@ -1,80 +1,121 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import BurgerMenu from './BurgerMenu';
 
-import Logo from './Logo'
-
-const NavigationBar = styled.div`
-    background-color: #560d0d;
-    padding: 2rem 3rem; 
+const NavigationContainer = styled.nav`
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    font-size: 1.8rem;
-    position: sticky;
-    top: 0;
-    z-index: 5;
-
+    padding: 1rem 2rem;
 `;
 
 const NavigationList = styled.ul`
     display: flex;
-    justify-content: space-evenly;
+    align-items: center;
     list-style: none;
-
-    @media screen and (max-width: 56.25em) {
-        flex-direction: column;
-        height: 100vh;
-        width: 100vw;
-    }
 `;
-
 const NavigationItem = styled.li`
 
-    
-    &:not(:last-child){
-        margin-right: 1.5rem;
+    :not(:last-child){
+        margin: 0 1rem 0 0;
     }
 `;
-
-const StyledLink = styled(Link)`
-    &:link,
-    &:visited {
-        text-decoration: none;
+const NavigationLink = styled(Link)`
+    :link,
+    :visited {
         color: #fff;
-        border: .2rem solid transparent;
-        border-radius: .3rem;
-        padding: 1rem;
+        font-size: 1.8rem;
+        text-decoration: none;
+        border: .2rem solid ${props => props.isChoosen ? '#fff' : 'transparent'};
+        border-radius: .5rem;
+        padding: 1rem 2rem;
     }
-    &:hover,
-    &:active {
-        border: .2rem solid #fff; 
+
+    :hover {
+        border: .2rem solid #fff;
     }
-    &::-moz-focus-inner {
-        border: none
+
+    :active {
+
+    }
+
+    ::-moz-focus-inner {
+        border: none;
     }
 `;
 
 export default class Navigation extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            isActiveHome: true,
+            isActiveRandom: false,
+            isActiveRules: false,
+            isOpenNavigation: true
+        }
+
+        this.activeHome = this.activeHome.bind(this);
+        this.activeRandom = this.activeRandom.bind(this);
+        this.activeRules = this.activeRules.bind(this);
+        this.openNavigation = this.openNavigation.bind(this);
+    }
+
+    
+    
+    activeHome(){
+        this.setState({
+            isActiveHome: true,
+            isActiveRandom: false,
+            isActiveRules: false
+        })
+    }
+    activeRandom(){
+        this.setState({
+            isActiveHome: false,
+            isActiveRandom: true,
+            isActiveRules: false
+        })
+    }
+    activeRules(){
+        this.setState({
+            isActiveHome: false,
+            isActiveRandom: false,
+            isActiveRules: true
+        })
+    }
+    
+    openNavigation() {
+        this.setState({
+            isOpenNavigation: !this.state.isOpenNavigation
+        })
+        
+    }
+
     render() {
+        
+        
         return (
-            <NavigationBar>
-                <Logo />
-                <nav className='navigation'>
-                    <NavigationList>
-                         
+            <NavigationContainer>
+                
+                <BurgerMenu isOpen={this.state.isOpenNavigation} handleClick={this.openNavigation} />
+               
+                <NavigationList>
+                
                     <NavigationItem>
-                            <StyledLink className='navigation__link' to='/'>Home</StyledLink>
-                        </NavigationItem>
-                        <NavigationItem>
-                            <StyledLink className='navigation__link' to='/random'>Random rules</StyledLink>
-                        </NavigationItem>
-                        <NavigationItem>
-                            <StyledLink className='navigation__link' to='/rules'>List of rules</StyledLink>
-                        </NavigationItem>
-                    </NavigationList>
-                </nav>
-            </NavigationBar>
+                        <NavigationLink onClick={this.activeHome} isChoosen={this.state.isActiveHome} to='/'>Home</NavigationLink>
+                    </NavigationItem>
+                
+                    <NavigationItem>
+                        <NavigationLink onClick={this.activeRandom} isChoosen={this.state.isActiveRandom} to='/random'>Random rule</NavigationLink>
+                    </NavigationItem>
+                
+                    <NavigationItem>
+                        <NavigationLink onClick={this.activeRules} isChoosen={this.state.isActiveRules} to='/rules'>List of rules</NavigationLink>
+                    </NavigationItem>
+
+                </NavigationList>
+
+            </NavigationContainer>
         )
     }
 }
