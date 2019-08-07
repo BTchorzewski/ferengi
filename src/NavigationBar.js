@@ -13,8 +13,13 @@ const Container = styled.div`
     font-size: 1.8rem;
     position: sticky;
     top: 0;
-    z-index: 5;
+    z-index: 50;
 
+    @media screen and (max-width: 900px) {
+        & {
+            align-items: flex-start;
+        }
+    }
 `;
 
 export default class NavigationBar extends Component {

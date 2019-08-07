@@ -5,6 +5,7 @@ const Line = styled.div`
     width: 3.5rem;
     height: .3rem;
     background-color: green;
+    transition: all .3s;
     :not(:last-child) {
         margin-bottom:.4rem
     }
@@ -18,14 +19,22 @@ const Burger = styled.div`
     order: 1;
     margin-left: 2rem;
     cursor: pointer;
+    position: absolute;
+    
+    right: 2rem;
+    z-index: 150;
+    @media screen and (min-width: 900px) {
+        display: none;
+      }
+      
     ${Line}:nth-child(1) {
-        background-color: ${ ({isOpen}) => isOpen ? 'yellow' : 'red'};
+        transform: ${ ({isOpen}) => isOpen ? 'rotate(45deg)  translate(0, 0)' : 'rotate(0)  translate(0, 0)'};
     }
     ${Line}:nth-child(2) {
-        background-color: ${ ({isOpen}) => isOpen ? 'yellow' : 'red'};
+        opacity: ${ ({isOpen}) => isOpen ? 0 : 1};
     }
     ${Line}:nth-child(3) {
-        background-color: ${ ({isOpen}) => isOpen ? 'yellow' : 'red'};
+        transform: ${ ({isOpen}) => isOpen ? 'rotate(-45deg) translate(1rem, -1rem)' : 'rotate(0) translate(0, 0)'};
     }
 `;
 
