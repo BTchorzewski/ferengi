@@ -9,10 +9,10 @@ const Wrapper = styled.div`
     min-height: 40vh;
     width: 70%;
     padding: 3rem;
-    background-color: #f3ff93;
+    background-color: ${props => props.theme.colors.secondary};
     border-radius:.3rem;
     box-shadow: 0 1.4rem 4rem rgba(0,0,0,.8);
-    color: #4d4d4d;
+    color: ${props => props.theme.colors.primaryFont};
 `;
 
 const HeadingPrimary = styled.h1`
@@ -37,7 +37,7 @@ const Link = styled.a`
     &:link,
     &:visited {
         font-size: 1.6rem;
-        color: #4d4d4d;
+        color: ${props => props.theme.colors.primaryFont};
         text-decoration: none;
         
     }

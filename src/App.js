@@ -1,14 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from 'react-redux';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
+import theme from './styledComponents/theme'
 import store from './redux/store'
 import NavigationBar from './NavigationBar';
 import { RulesContainer } from './Rules';
 import { RandomMachineContainer } from './RandomMachineContainer';
+
 import Home from "./Home";
+
 const Main = styled.main`
-  background-color: #76a21e;
+  background-color: ${props => props.theme.colors.primary};
   min-height: 93vh;
   display: flex;
   justify-content: center;
@@ -21,14 +24,23 @@ const Main = styled.main`
 function App() {
   return (
     <Provider store={store}>
+
+      <ThemeProvider theme={theme}>
+
       <Router>
+
         <NavigationBar />
+
         <Main>
           <Route exact path="/" component={Home} />
           <Route path="/random" component={RandomMachineContainer} />
           <Route path="/rules" component={RulesContainer} /> 
         </Main>
+
       </Router>
+
+      </ThemeProvider>
+      
     </Provider> 
   );
 }
