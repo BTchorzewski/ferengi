@@ -2,8 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from 'react-redux';
 import styled, { ThemeProvider } from 'styled-components';
-import theme from './styledComponents/theme'
-import store from './redux/store'
+import theme from './styledComponents/theme';
+// import GlobalStyle from './styledComponents/base'
+import store from './redux/store';
 import NavigationBar from './NavigationBar';
 import { RulesContainer } from './Rules';
 import { RandomMachineContainer } from './RandomMachineContainer';
@@ -11,7 +12,6 @@ import { RandomMachineContainer } from './RandomMachineContainer';
 import Home from "./Home";
 
 const Main = styled.main`
-  background-color: ${props => props.theme.colors.primary};
   min-height: 93vh;
   display: flex;
   justify-content: center;
@@ -26,6 +26,8 @@ function App() {
     <Provider store={store}>
 
       <ThemeProvider theme={theme}>
+
+      
 
       <Router>
 
