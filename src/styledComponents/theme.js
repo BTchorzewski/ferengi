@@ -14,7 +14,7 @@ export default {
 
         }
     },
-    respond: {
+    responsive: {
         phone: '37.5em',
         tabPort: '56,25em',
         tabLand: '75em',

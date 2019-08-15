@@ -15,7 +15,7 @@ const Container = styled.div`
     top: 0;
     z-index: 50;
 
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: ${props => props.theme.responsive.tabLand}) {
         & {
             align-items: flex-start;
         }

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from 'react-redux';
 import styled, { ThemeProvider } from 'styled-components';
 import theme from './styledComponents/theme';
-// import GlobalStyle from './styledComponents/base'
+import GlobalStyles from './styledComponents/GlobalStyles'
 import store from './redux/store';
 import NavigationBar from './NavigationBar';
 import { RulesContainer } from './Rules';
@@ -15,21 +15,27 @@ const Main = styled.main`
   min-height: 93vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 10rem 0;
-  
+  @media screen and (max-width: ${props => props.theme.responsive.tabLand}) {
+    padding: 0;
+    align-items: stretch;
+  }
   
 `;
+
+
 
 function App() {
   return (
     <Provider store={store}>
-
-      <ThemeProvider theme={theme}>
-
       
+      <ThemeProvider theme={theme}>
+      <>  
+      <GlobalStyles />
 
       <Router>
+        
 
         <NavigationBar />
 
@@ -40,7 +46,7 @@ function App() {
         </Main>
 
       </Router>
-
+      </>
       </ThemeProvider>
       
     </Provider> 

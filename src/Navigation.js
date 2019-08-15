@@ -10,7 +10,7 @@ const NavigationContainer = styled.nav`
     padding: 1rem 2rem;
     flex: 1 0 95%;
     
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: ${props => props.theme.responsive.tabLand}) {
         & {
             justify-content: center;
         }
@@ -23,7 +23,7 @@ const NavigationList = styled.ul`
     list-style: none;
     
 
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: ${props => props.theme.responsive.tabLand}) {
         & {
             display: ${({isOpen}) => isOpen ? 'flex' : 'none'};
             height: ${({isOpen}) => isOpen ? '100vh' : 0};
@@ -41,7 +41,7 @@ const NavigationItem = styled.li`
     :not(:last-child){
         margin: 0 1rem 0 0;
         
-        @media screen and (max-width: 900px) {
+        @media screen and (max-width: ${props => props.theme.responsive.tabLand}) {
             & {
                 margin: 0 0 3rem 0;
                 display: flex;
@@ -60,7 +60,7 @@ const NavigationLink = styled(Link)`
         border-radius: .5rem;
         padding: 1rem 2rem;
 
-        @media screen and (max-width: 900px) {
+        @media screen and (max-width: ${props => props.theme.responsive.tabLand}) {
             & {
                 flex: 1 0 100%;
                 text-align: center;
@@ -89,7 +89,7 @@ export default class Navigation extends Component {
             isActiveHome: true,
             isActiveRandom: false,
             isActiveRules: false,
-            isOpenNavigation: true
+            isOpenNavigation: false
         }
 
         this.activeHome = this.activeHome.bind(this);

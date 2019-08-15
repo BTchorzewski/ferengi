@@ -23,7 +23,7 @@ const Burger = styled.div`
     
     right: 2rem;
     z-index: 150;
-    @media screen and (min-width: 900px) {
+    @media screen and (min-width: ${props => props.theme.responsive.tabLand}) {
         display: none;
       }
       

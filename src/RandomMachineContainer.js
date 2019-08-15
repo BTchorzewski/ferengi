@@ -4,6 +4,8 @@ import { getAllRules } from './redux/selector';
 import {withRouter} from 'react-router-dom';
 import RuleContainer from './RuleContainer';
 import styled from 'styled-components';
+
+
 import _ from 'lodash';
 
 const Random = styled.div`
@@ -15,7 +17,9 @@ const Random = styled.div`
     box-shadow: 0 .3rem .6rem rgba(0,0,0, .25);
     display: flex;
     flex-flow: column wrap;
-
+    @media screen and (max-width: ${props => props.theme.responsive.tabLand}) {
+        width: 100%;
+    }
 `;
 
 const Button = styled.button`

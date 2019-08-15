@@ -12,6 +12,10 @@ const Wrapper = styled.div`
     height: 70vh;
     overflow-y: scroll;
     position: relative;
+    @media screen and (max-width: ${props => props.theme.responsive.tabLand}) {
+        width: 100%;
+        height: 100vh;
+    }
 `;
 
 const Breadcrumbs = styled.div`

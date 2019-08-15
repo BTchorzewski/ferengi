@@ -13,6 +13,9 @@ const Wrapper = styled.div`
     border-radius:.3rem;
     box-shadow: 0 1.4rem 4rem rgba(0,0,0,.8);
     color: ${props => props.theme.colors.primaryFont};
+    @media screen and (max-width: ${props => props.theme.responsive.tabLand}) {
+        width: 100%;
+    }
 `;
 
 const HeadingPrimary = styled.h1`

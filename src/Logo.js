@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components';
 
 
 const LogoBox = styled.div`
-    width: 6rem;
+    min-width: 6rem;
     height: -4rem;
     
    
