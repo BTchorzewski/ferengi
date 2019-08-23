@@ -1,25 +1,24 @@
 export default {
+  colors: {
+    primary: "#76a21e",
+    secondary: "#f3ff93"
+  },
+  fonts: {
+    size: {
+      small: "1.2rem",
+      medium: "1.6rem",
+      large: "2.4rem"
+    },
     colors: {
-        primary: '#76a21e',
-        secondary: '#f3ff93',
-        primaryFont: '#4d4d4d'
-    },
-    fonts: {
-        size: {
-            small: '1.2rem',
-            medium: '1.6rem',
-            large: '2.4rem'
-        },
-        colors: {
-
-        }
-    },
-    responsive: {
-        phone: '37.5em',
-        tabPort: '56,25em',
-        tabLand: '75em',
-        bigDesktop: '112,5em'
+      primary: "#4d4d4d"
     }
+  },
+  responsive: {
+    phone: "37.5em",
+    tabPort: "56,25em",
+    tabLand: "75em",
+    bigDesktop: "112,5em"
+  }
 };
 
 // media query manager
