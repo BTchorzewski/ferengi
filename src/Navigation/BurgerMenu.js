@@ -19,13 +19,18 @@ const Burger = styled.div`
   order: 1;
   margin-left: 2rem;
   cursor: pointer;
-  position: absolute;
-  right: 2rem;
+  
   z-index: 150;
 
   @media screen and (min-width: ${props => props.theme.responsive.tabLand}) {
     display: none;
   }
+
+  @media screen and (max-width: ${props => props.theme.responsive.tabLand}) {
+    & {
+       align-self: flex-start; 
+    }
+}
 
   ${Line}:nth-child (1) {
     transform: ${({ isOpen }) =>

@@ -4,15 +4,11 @@ import styled from 'styled-components';
 import BurgerMenu from './BurgerMenu';
 
 const NavigationContainer = styled.nav`
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    padding: 1rem 2rem;
-    flex: 1 0 95%;
+    
     
     @media screen and (max-width: ${props => props.theme.responsive.tabLand}) {
         & {
-            justify-content: center;
+            
         }
     }
 `;
@@ -20,16 +16,15 @@ const NavigationContainer = styled.nav`
 const NavigationList = styled.ul`
     display: flex;
     align-items: center;
+    flex: 1;
     list-style: none;
     
 
     @media screen and (max-width: ${props => props.theme.responsive.tabLand}) {
         & {
             display: ${({isOpen}) => isOpen ? 'flex' : 'none'};
-            height: ${({isOpen}) => isOpen ? '100vh' : 0};
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
+            
+            
             
 
         }
@@ -38,7 +33,7 @@ const NavigationList = styled.ul`
 const NavigationItem = styled.li`
     
 
-    :not(:last-child){
+    
         margin: 0 1rem 0 0;
         
         @media screen and (max-width: ${props => props.theme.responsive.tabLand}) {

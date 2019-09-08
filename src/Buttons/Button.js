@@ -9,7 +9,7 @@ const Button = styled.button`
   font-weight: 700;
   font-family: inherit;
   font-size: ${props => props.theme.fonts.size.medium};
-  color: ${props => props.theme.fonts.color.primary};
+  color: ${props => props.theme.fonts.colors.primary};
   &:active {
     background-color: ${props => props.theme.colors.primary};
   }

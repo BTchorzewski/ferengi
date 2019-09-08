@@ -3,9 +3,13 @@ import styled, { keyframes } from 'styled-components';
 
 
 const LogoBox = styled.div`
-    min-width: 6rem;
-    height: -4rem;
-    
+    display:flex    
+    width: 20px;
+    @media screen and (max-width: ${props => props.theme.responsive.tabLand}) {
+        & {
+           
+        }
+    }
    
 `;
 
@@ -21,6 +25,7 @@ const rotateAnimation = keyframes`
 `;
 
 const Image = styled.img`
+    
     width: 100%;
     height: auto;
     animation: ${rotateAnimation} 3s ease-in-out 0s infinite;

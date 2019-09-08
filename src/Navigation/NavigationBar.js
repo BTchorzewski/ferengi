@@ -6,18 +6,11 @@ import Logo from './Logo'
 
 const Container = styled.div`
     background-color: #560d0d;
-    padding: 2rem 3rem; 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.8rem;
-    position: sticky;
-    top: 0;
-    z-index: 50;
-
+    overflow: hidden;
+   
     @media screen and (max-width: ${props => props.theme.responsive.tabLand}) {
         & {
-            align-items: flex-start;
+           
         }
     }
 `;
@@ -28,9 +21,9 @@ export default class NavigationBar extends Component {
             <Container>
 
                 <Logo />
-                
+
                 <Navigation />
-            
+
             </Container>
         )
     }

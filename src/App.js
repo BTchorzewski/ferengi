@@ -5,7 +5,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import theme from './styledComponents/theme';
 import GlobalStyles from './styledComponents/GlobalStyles'
 import store from './redux/store';
-import NavigationBar from './NavigationBar';
+import NavigationBar from './Navigation/NavigationBar';
 import { RulesContainer } from './Rules';
 import { RandomMachineContainer } from './RandomMachineContainer';
 
